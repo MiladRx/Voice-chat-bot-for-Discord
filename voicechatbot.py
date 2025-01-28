@@ -1,6 +1,14 @@
 import discord
 from discord.ext import commands
 from datetime import datetime
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
+
+# Get the token from the .env file
+TOKEN = os.getenv('DISCORD_TOKEN')
 
 intents = discord.Intents.default()
 intents.members = True
@@ -41,4 +49,4 @@ async def on_voice_state_update(member, before, after):
         message = await channel.fetch_message(channel.last_message_id)
         await message.add_reaction("👋")
 
-bot.run('MTMzMzkyODgxNDkyMDYwMTY2MA.GgydT9.sJI1H7l-c4Yy651BBjF0LyJo0KQUQH6-2WmKVo')  # Replace with your actual token
+bot.run(TOKEN)
